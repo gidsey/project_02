@@ -48,7 +48,7 @@ if __name__ == "__main__":
         return all_players
 
 
-    def write_List():
+    def write_list():
         """Write out the text files."""
         with open("teams.txt", "w") as file:
             file.write("\nSharks" + '\n' + "=" * 10 + '\n')
@@ -78,5 +78,5 @@ if __name__ == "__main__":
 
     get_players('soccer_players.csv')
     make_teams()
-    write_List()
+    write_list()
     make_welcome_letters()
