@@ -8,6 +8,7 @@ if __name__ == "__main__":
     players = {}
     exp_players = []
     ama_players = []
+    all_players = []
     sharks = []
     raptors = []
     dragons = []
@@ -29,6 +30,7 @@ if __name__ == "__main__":
         # Create a separate list of experineced platers and amateur players
         for item in players.items():
             player_info = ', '.join([item[0], item[1][0], item[1][1]])
+            all_players.append(player_info)
             if (item[1][0]) == 'YES':
                 exp_players.append(player_info)
             else:
@@ -42,6 +44,8 @@ if __name__ == "__main__":
             raptors.append(ama_players.pop())
             dragons.append(exp_players.pop())
             dragons.append(ama_players.pop())
+
+        return all_players
 
 
     def write_List():
@@ -58,6 +62,21 @@ if __name__ == "__main__":
                 file.write(line + '\n')
 
 
+    def make_welcome_letters():
+        """Create the individual welcome letters."""
+        print("players = {}".format(players))
+        print(len(all_players))
+        for item in players.items():
+            player_name = item[0].replace(' ', '_')
+            # .replace ref: https://stackoverflow.com/questions/12723751/replacing-instances-of-a-character-in-a-string#12723785
+            guardian = item[1][1]
+            with open(player_name.lower() + ".txt", "w") as file:
+                file.write('Dear ' + guardian + ',\n')
+
+
+
+
     get_players('soccer_players.csv')
     make_teams()
     write_List()
+    make_welcome_letters()
