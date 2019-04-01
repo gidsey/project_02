@@ -75,7 +75,8 @@ if __name__ == "__main__":
             line1 = 'Dear {}, '.format(guardian)
             line2 = ('We are pleased to tell you that {} has been '
                      'chosen to play in the {}!'.format(player, thisteam))
-            line3 = 'The next practice day is on Sunday at 11am sharp.'
+            line3 = ('The next practice day is on Sunday 7 April 2019 '
+                     'at 11am sharp.')
             line4 = 'Looking forward to seeing you there.'
             line5 = 'Love from the Python team x'
             # Use of writelines()
