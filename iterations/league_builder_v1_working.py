@@ -1,5 +1,6 @@
 """Create three equal ability soccer teams from a supplied list of players."""
 import csv
+import sys
 
 
 if __name__ == "__main__":
@@ -22,8 +23,10 @@ if __name__ == "__main__":
                  [row['Soccer Experience'], row['Guardian Name(s)']]
             return players
 
+
     def make_teams():
         """Assign players into mixed ability teams."""
+
         # Create a separate list of experineced platers and amateur players
         for item in players.items():
             player_info = ', '.join([item[0], item[1][0], item[1][1]])
@@ -33,7 +36,7 @@ if __name__ == "__main__":
             else:
                 ama_players.append(player_info)
 
-        # Assign an equal number of experienced & amateur players to each team
+        # Assign an equal number of exp and amateur plater to ech team
         for player in exp_players:
             sharks.append(exp_players.pop())
             sharks.append(ama_players.pop())
@@ -44,46 +47,34 @@ if __name__ == "__main__":
 
         return all_players
 
+
     def write_list():
         """Write out the text files."""
-        formatting = '\n' + "=" * 8 + '\n'
         with open("teams.txt", "w") as file:
-            file.write("\nSharks" + formatting)
+            file.write("\nSharks" + '\n' + "=" * 10 + '\n')
             for line in sharks:
                 file.write(line + '\n')
-            file.write("\nRaptors" + formatting)
+            file.write("\nRaptors" + '\n' + "=" * 10 + '\n')
             for line in raptors:
                 file.write(line + '\n')
-            file.write("\nDragons" + formatting)
+            file.write("\nDragons" + '\n' + "=" * 10 + '\n')
             for line in dragons:
                 file.write(line + '\n')
 
+
     def make_welcome_letters():
         """Create the individual welcome letters."""
+        print("players = {}".format(players))
+        print(len(all_players))
         for item in players.items():
+            player_name = item[0].replace(' ', '_')
+            # .replace ref: https://stackoverflow.com/questions/12723751/replacing-instances-of-a-character-in-a-string#12723785
             guardian = item[1][1]
-            player = item[0]
-            # Use of .replace()
-            # Ref: https://tinyurl.com/yxhxwrhk
-            file_name = player.replace(' ', '_')
-            # Get the player's team
-            # Check if a sublist contains an item
-            # Ref: https://tinyurl.com/y4njcjr9
-            if any(player in i for i in sharks):
-                thisteam = "SHARKS"
-            elif any(player in i for i in raptors):
-                thisteam = "RAPTORS"
-            elif any(player in i for i in dragons):
-                thisteam = "DRAGONS"
-            line1 = 'Dear {}, '.format(guardian)
-            line2 = 'We are pleased to tell you that {} has been chosen to play in the {}!'.format(player, thisteam)
-            line3 = 'The next practice day is on Sunday at 11am sharp.'
-            line4 = 'Looking forward to seeing you there.'
-            line5 = 'Love from the Python team x'
-            # Use of writelines()
-            # Ref: https://tinyurl.com/yyjvd692
-            with open(file_name.lower() + ".txt", "w") as file:
-                file.writelines('\n\n'.join([line1, line2, line3, line4, line5]))
+            with open(player_name.lower() + ".txt", "w") as file:
+                file.write('Dear ' + guardian + ',\n')
+
+
+
 
     get_players('soccer_players.csv')
     make_teams()
