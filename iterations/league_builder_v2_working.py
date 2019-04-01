@@ -35,9 +35,12 @@ if __name__ == "__main__":
 
         # Assign an equal number of experienced & amateur players to each team
         for player in exp_players:
-            sharks.extend([exp_players.pop(), ama_players.pop()])
-            raptors.extend([exp_players.pop(), ama_players.pop()])
-            dragons.extend([exp_players.pop(), ama_players.pop()])
+            sharks.append(exp_players.pop())
+            sharks.append(ama_players.pop())
+            raptors.append(exp_players.pop())
+            raptors.append(ama_players.pop())
+            dragons.append(exp_players.pop())
+            dragons.append(ama_players.pop())
 
         return all_players
 
@@ -73,16 +76,14 @@ if __name__ == "__main__":
             elif any(player in i for i in dragons):
                 thisteam = "DRAGONS"
             line1 = 'Dear {}, '.format(guardian)
-            line2 = ('We are pleased to tell you that {} has been '
-                     'chosen to play in the {}!'.format(player, thisteam))
+            line2 = 'We are pleased to tell you that {} has been chosen to play in the {}!'.format(player, thisteam)
             line3 = 'The next practice day is on Sunday at 11am sharp.'
             line4 = 'Looking forward to seeing you there.'
             line5 = 'Love from the Python team x'
             # Use of writelines()
             # Ref: https://tinyurl.com/yyjvd692
             with open(file_name.lower() + ".txt", "w") as file:
-                file.writelines('\n\n'.join([line1, line2, line3,
-                                            line4, line5]))
+                file.writelines('\n\n'.join([line1, line2, line3, line4, line5]))
 
     get_players('soccer_players.csv')
     make_teams()
