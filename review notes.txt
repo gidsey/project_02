@@ -1,0 +1,11 @@
+Hi,
+
+Please find my soccer league project for review. I am aiming for the 'Exceed 
+Expectations' grade on this project.
+
+I found the hardest part of this project was choosing the correct data type to store the data from the CSV file. I opted for a dictionary because I thought it would allow me to easily store the player alongside their associated data. Whilst this does work, I had to create lists to process the data. Also, it caused a further problem when getting the player's team name for the individual letters. I got around this using the 'any' keyword which I have referenced in the comments.
+
+I liked the fact that I was able to use the pop() function to distribute experienced and amateur players across the team, but I would be interested to know if I have made this project more complex than it need to be?
+
+Many thanks,
+Chris
